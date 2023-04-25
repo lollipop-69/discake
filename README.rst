@@ -4,10 +4,10 @@ discake
 .. image:: https://discord.com/api/guilds/815886477066108968/embed.png
    :target: https://discord.gg/egvmz5NjSZ
    :alt: Discord server invite
-.. image:: https://img.shields.io/pypi/v/discord.py.svg
-   :target: https://pypi.python.org/pypi/discord.py
+.. image:: https://img.shields.io/pypi/v/discake.svg
+   :target: https://pypi.python.org/pypi/discake
    :alt: PyPI version info
-.. image:: https://img.shields.io/pypi/pyversions/discord.py.svg
+.. image:: https://img.shields.io/pypi/pyversions/discake.svg
    :target: https://pypi.python.org/pypi/discord.py
    :alt: PyPI supported Python versions
 
@@ -71,3 +71,9 @@ Links
 ------
 
 - `Official Discord Server <https://discord.gg/egvmz5NjSZ>`_
+
+Author
+------
+.. image:: https://discord.c99.nl/widget/theme-3/545953035776688139.png
+   :target: https://discord.gg/egvmz5NjSZ
+   :alt: Author Info
