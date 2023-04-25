@@ -18,9 +18,9 @@ setup(
     project_urls={
         "Homepage": "https://github.com/lollipop-69/discake/"
     },
-    packages=find_packages()
+    packages=find_packages(),
     python_requires='>=3.8.0',
-    keywords=['discord py', 'discord paginator', 'paginator', 'button paginator']
+    keywords=['discord py', 'discord paginator', 'paginator', 'button paginator'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: MIT License',
