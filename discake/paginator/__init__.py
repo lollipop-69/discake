@@ -2,11 +2,10 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Union, List, Any, Optional
 
-from discord import Embed, ButtonStyle, Interaction
-from discord.ui import View, Button
+from discord import Embed, Interaction
 from discord.ext.commands import Context
 
-from .utils.paginate import ButtonsView
+from .utils import ButtonsView
 
 if TYPE_CHECKING:
     from discord import Member, Message, InteractionMessage, WebhookMessage
@@ -44,22 +43,22 @@ class Paginator:
         next = '▶',
         last = '⏭',
         ephemeral: bool = False      
-    )
-    super().__init__()
-    
-    self.first = first
-    self.prev = previous
-    self.clear = clear
-    self.next = next
-    self.last = last
+    ):
+        super().__init__()
+        
+        self.first = first
+        self.prev = previous
+        self.clear = clear
+        self.next = next
+        self.last = last
 
-    self.author: Member = None
-    self.page: Message = None
-    self._pages = []
-    self._index = 0
-    self.ephemeral = ephemeral
-    self.timeout = timeout
-    self.entries: Any = entries
+        self.author: Member = None
+        self.page: Message = None
+        self._pages = []
+        self._index = 0
+        self.ephemeral = ephemeral
+        self.timeout = timeout
+        self.entries: Any = entries
     
     async def send(self, interaction: Union[Context, Interaction]):
         if not self.entries:
