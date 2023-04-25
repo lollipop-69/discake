@@ -68,7 +68,7 @@ class ButtonsView(View):
             self.task._index += 1
             if self.task._index > len(self.task._pages) - 1 :
                 self.task._index = 0 
-            if isinstance(self.task._pages[self.task._index], discord.Embed):
+            if isinstance(self.task._pages[self.task._index], Embed):
                 await interaction.response.edit_message(embed=self.task._pages[self.task._index])
             else:
                 await interaction.response.edit_message(content=self.task._pages[self.task._index]) 
