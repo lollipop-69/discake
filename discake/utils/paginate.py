@@ -1,4 +1,4 @@
-from __future__ import annnotations
+from __future__ import annotations
 
 from discord import Embed, ButtonStyle, Interaction
 from discord.ui import View, Button

@@ -7,7 +7,7 @@ setup(
     name='discake',
     author='Carlos',
     url='https://github.com/lollipop-69/discake',
-    version='0.0.5',
+    version='0.0.6',
     license='MIT',
     description='A discord py support library containing utilities.',
     long_description=readme,
