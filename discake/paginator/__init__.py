@@ -1,14 +1,15 @@
 from __future__ import annotations
+from cgitb import grey
 
-from typing import TYPE_CHECKING, Union, List, Any, Optional
+from typing import TYPE_CHECKING, Literal, Union, List, Any, Optional
 
 from discord import Embed, Interaction
 from discord.ext.commands import Context
 
-from ..utils import ButtonsView
+from discake.utils import ButtonsView
 
 if TYPE_CHECKING:
-    from discord import Member, Message, InteractionMessage, WebhookMessage
+    from discord import Member, Message
     
 __all__ = (
   'Paginator'
@@ -22,27 +23,27 @@ class Paginator:
     Attributes:
     entries (List[Any]): List of items to be paginated.
     timeout (Optional[float]): The timeout value of the View.
+    color (Literal['blurple', 'grey', 'green','red']): The color of the buttons.
     first (str): The emoji for representing the button for the first page.
     previous (str): The emoji for representing the button for the preceding page.
     clear (str): The emoji for representing the button for disabling buttons.
     next (str): The emoji for representing the button for the succeeding page.
     last (str): The emoji for representing the button for the last page.
-    ephemeral (bool): Sends an ephemeral message if True. (while using this class in a slash command)
 
     Methods:
-    send(interaction: Union[Context, Interaction]): Starts the paginator and sends the message
+    send(interaction: Union[Context, Interaction]): Starts the paginator and sends the message.
     """    
     def __init__(
         self,
         *, 
         entries: List[Any] = None,
         timeout: Optional[float] = 180,
+        color: Literal['blurple', 'grey', 'green', 'red'] = 'grey',
         first = '⏮',
         previous = '◀',
         clear = '⏹',
         next = '▶',
-        last = '⏭',
-        ephemeral: bool = False      
+        last = '⏭'     
     ):
         super().__init__()
         
@@ -56,8 +57,8 @@ class Paginator:
         self.page: Message = None
         self._pages = []
         self._index = 0
-        self.ephemeral = ephemeral
         self.timeout = timeout
+        self.color = color
         self.entries: Any = entries
     
     async def send(self, interaction: Union[Context, Interaction]):
@@ -69,28 +70,28 @@ class Paginator:
         for chunk in entries:
             self._pages.append(chunk)
             
-        view = ButtonsView(task = self, timeout = self.timeout, previous = self.prev, next = self.next, first = self.first,clear = self.clear, last = self.last)
+        view = ButtonsView(task = self, color = self.color, timeout = self.timeout, previous = self.prev, next = self.next, first = self.first,clear = self.clear, last = self.last)
         
         if isinstance(self._pages[0], Embed):
             if len(self._pages) > 1:
                 if isinstance(interaction, Interaction):
-                    self.page = await interaction.followup.send(embed=self._pages[0],view=view,ephemeral=self.ephemeral)
+                    self.page = await interaction.followup.send(embed=self._pages[0],view=view) 
                 else:
                     self.page = await interaction.send(embed=self._pages[0],view=view)
             else:
                 if isinstance(interaction, Interaction):
-                    self.page = await interaction.followup.send(embed=self._pages[0],ephemeral=self.ephemeral)
+                    self.page = await interaction.response.send_message(embed=self._pages[0])
                 else:
                     self.page = await interaction.send(embed=self._pages[0])
-        elif isinstance(self._pages[0], str):
+        elif isinstance(self._pages[0], Union[str, int]):
             if len(self._pages) > 1:
                 if isinstance(interaction, Interaction):
-                    self.page = await interaction.followup.send(content=self._pages[0],view=view,ephemeral=self.ephemeral)
+                    self.page = await interaction.followup.send(content=self._pages[0],view=view)
                 else:
                     self.page = await interaction.send(content=self._pages[0],view=view)
             else:
                 if isinstance(interaction, Interaction):
-                    self.page = await interaction.followup.send(content=self._pages[0],ephemeral=self.ephemeral)
+                    self.page = await interaction.response.send_message(content=self._pages[0])
                 else:
                     self.page = await interaction.send(content=self._pages[0])
         else:

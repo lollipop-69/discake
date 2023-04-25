@@ -1,3 +1,3 @@
-from .paginator import *
+from .paginator import Paginator
 from .utils import *
-__version__ = "0.0.6"
+__version__ = "0.0.7"
