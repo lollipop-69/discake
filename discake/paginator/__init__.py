@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING, Union, List, Any, Optional
 from discord import Embed, Interaction
 from discord.ext.commands import Context
 
-from discake import ButtonsView
+from ..utils import ButtonsView
 
 if TYPE_CHECKING:
     from discord import Member, Message, InteractionMessage, WebhookMessage
