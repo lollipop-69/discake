@@ -12,8 +12,7 @@ if TYPE_CHECKING:
     from discord import Member, Message, InteractionMessage, WebhookMessage
     
 __all__ = (
-  'Paginator',
-  'ButtonsView
+  'Paginator'
 )
       
 class Paginator:
@@ -29,9 +28,10 @@ class Paginator:
     clear (str): The emoji for representing the button for disabling buttons.
     next (str): The emoji for representing the button for the succeeding page.
     last (str): The emoji for representing the button for the last page.
+    ephemeral (bool): Sends an ephemeral message if True. (while using this class in a slash command)
 
     Methods:
-    send(obj: Union[Context, Interaction]): Starts the paginator and sends the message
+    send(interaction: Union[Context, Interaction]): Starts the paginator and sends the message
     """    
     def __init__(
         self,
@@ -83,3 +83,16 @@ class Paginator:
                     self.page = await interaction.followup.send(embed=self._pages[0],ephemeral=self.ephemeral)
                 else:
                     self.page = await interaction.send(embed=self._pages[0])
+        elif isinstance(self._pages[0], str):
+            if len(self._pages) > 1:
+                if isinstance(interaction, Interaction):
+                    self.page = await interaction.followup.send(content=self._pages[0],view=view,ephemeral=self.ephemeral)
+                else:
+                    self.page = await interaction.send(content=self._pages[0],view=view)
+            else:
+                if isinstance(interaction, Interaction):
+                    self.page = await interaction.followup.send(content=self._pages[0],ephemeral=self.ephemeral)
+                else:
+                    self.page = await interaction.send(content=self._pages[0])
+        else:
+            raise TypeError("Entries should be of type 'discord.Embed' or 'string'")
