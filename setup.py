@@ -20,6 +20,7 @@ setup(
     },
     packages=find_packages()
     python_requires='>=3.8.0',
+    keywords=['discord py', 'discord paginator', 'paginator', 'button paginator']
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: MIT License',
