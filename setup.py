@@ -4,19 +4,19 @@ with open('README.rst', 'r') as file:
     readme = file.read()
     
 setup(
-    name='dpy-utils',
+    name='discake',
     author='Carlos',
-    url='https://github.com/lollipop-69/dpy-utils',
+    url='https://github.com/lollipop-69/discake',
     version='0.0.1,
     license='MIT',
-    description='A discord py extension containing utitlities.',
+    description='A discord py support library containing utilities.',
     long_description=readme,
     long_description_content_type='text/x-rst',
     install_requires=[
         'discord.py'
     ],
     project_urls={
-        "Homepage": "https://github.com/lollipop-69/dpy-utils/"
+        "Homepage": "https://github.com/lollipop-69/discake/"
     },
     packages=find_packages()
     python_requires='>=3.8.0',

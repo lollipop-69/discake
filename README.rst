@@ -1,4 +1,4 @@
-dpy-utils
+discake
 ==========
 
 .. image:: https://discord.com/api/guilds/815886477066108968/embed.png
@@ -27,10 +27,10 @@ Installing
 .. code:: sh
 
     # Linux/macOS
-    python3 -m pip install -U dpy-utils
+    python3 -m pip install -U discake
 
     # Windows
-    py -3 -m pip install -U dpy-utils
+    py -3 -m pip install -U discake
 
 
 Quick Example
@@ -41,7 +41,7 @@ Quick Example
     import discord
     from discord import Embed, Intents
     from discord.ext import commands
-    from dpyutils import Paginator
+    from discake import Paginator
 
     class MyBot(comamnds.Bot):
         def __init__(self):
