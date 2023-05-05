@@ -1,5 +1,4 @@
 from __future__ import annotations
-from cgitb import grey
 
 from typing import TYPE_CHECKING, Literal, Union, List, Any, Optional
 
@@ -62,6 +61,12 @@ class Paginator:
         self.entries: Any = entries
     
     async def send(self, interaction: Union[Context, Interaction]):
+        """
+        Sends or starts the paginator
+
+        Attributes:
+        interaction (Union[Context, Interaction): The Interaction or Context to respond to.
+        """
         if not self.entries:
             raise AttributeError('You must provide atleast one entry or page for pagination.') 
             

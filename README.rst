@@ -8,7 +8,7 @@ discake
    :target: https://pypi.python.org/pypi/discake
    :alt: PyPI version info
 .. image:: https://img.shields.io/pypi/pyversions/discake.svg
-   :target: https://pypi.python.org/pypi/discord.py
+   :target: https://pypi.python.org/pypi/discake
    :alt: PyPI supported Python versions
 
 A discord py util library.
@@ -70,7 +70,9 @@ Quick Example
 Links
 ------
 
-- `Official Discord Server <https://discord.gg/egvmz5NjSZ>`_
+.. image:: https://invidget.switchblade.xyz/egvmz5NjSZ?theme=light
+   :target: https://discord.gg/egvmz5NjSZ
+   :alt: Support Server
 
 Author
 ------
