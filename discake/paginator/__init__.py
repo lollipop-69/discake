@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from discord import Member, Message
     
 __all__ = (
-  'Paginator'
+  'Paginator',
 )
       
 class Paginator:
