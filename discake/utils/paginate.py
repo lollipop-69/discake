@@ -4,6 +4,10 @@ from discord import Embed, ButtonStyle, Interaction
 from discord.ui import View, Button
 from typing import Literal, Optional
 
+__all__ = (
+    'ButtonsView',
+)
+
 class ButtonsView(View):
     def __init__(
         self,

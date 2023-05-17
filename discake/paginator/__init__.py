@@ -80,23 +80,31 @@ class Paginator:
         if isinstance(self._pages[0], Embed):
             if len(self._pages) > 1:
                 if isinstance(interaction, Interaction):
+                    try: await interaction.response.defer()
+                    except: pass
                     self.page = await interaction.followup.send(embed=self._pages[0],view=view) 
                 else:
                     self.page = await interaction.send(embed=self._pages[0],view=view)
             else:
                 if isinstance(interaction, Interaction):
-                    self.page = await interaction.response.send_message(embed=self._pages[0])
+                    try: await interaction.response.defer()
+                    except: pass
+                    self.page = await interaction.followup.send(embed=self._pages[0])
                 else:
                     self.page = await interaction.send(embed=self._pages[0])
         elif isinstance(self._pages[0], Union[str, int]):
             if len(self._pages) > 1:
                 if isinstance(interaction, Interaction):
+                    try: await interaction.response.defer()
+                    except: pass
                     self.page = await interaction.followup.send(content=self._pages[0],view=view)
                 else:
                     self.page = await interaction.send(content=self._pages[0],view=view)
             else:
                 if isinstance(interaction, Interaction):
-                    self.page = await interaction.response.send_message(content=self._pages[0])
+                    try: await interaction.response.defer()
+                    except: pass
+                    self.page = await interaction.followup.send(content=self._pages[0])
                 else:
                     self.page = await interaction.send(content=self._pages[0])
         else:

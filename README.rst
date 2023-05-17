@@ -43,7 +43,7 @@ Quick Example
     from discord.ext import commands
     from discake import Paginator
 
-    class MyBot(comamnds.Bot):
+    class MyBot(commands.Bot):
         def __init__(self):
             super().__init__(command_prefix = '!')
             
@@ -69,7 +69,6 @@ Quick Example
 
 Links
 ------
-
 .. image:: https://invidget.switchblade.xyz/egvmz5NjSZ?theme=light
    :target: https://discord.gg/egvmz5NjSZ
    :alt: Support Server
